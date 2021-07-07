@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Bloc',
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       home: MultiBlocProvider(
         providers: [
           BlocProvider<SellerBloc>(

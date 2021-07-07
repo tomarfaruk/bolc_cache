@@ -15,7 +15,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: SingleChildScrollView(child: _body()),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: _body(),
+        ),
       ),
     );
   }

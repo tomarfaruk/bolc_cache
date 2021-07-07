@@ -27,26 +27,28 @@ class _SellerScreenState extends State<SellerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SellerBloc, SellerState>(
-        builder: (BuildContext context, SellerState state) {
-      if (state is SellerListError) {
-        final error = state.error;
-        String message = '${error.message}\nTap to Retry.';
-        return ErrorTxt(message: message, onTap: _loadSeller);
-      }
-      if (state is SellerLoaded) {
-        List<SellerModel> sellers = state.sellers;
-        return _list(sellers);
-      }
-      return Container(height: 180, child: Loading());
-    });
+    return Container(
+      height: 180,
+      child: BlocBuilder<SellerBloc, SellerState>(
+          builder: (BuildContext context, SellerState state) {
+        if (state is SellerListError) {
+          final error = state.error;
+          String message = '${error.message} Tap to Retry.';
+          return ErrorTxt(message: message, onTap: _loadSeller);
+        }
+        if (state is SellerLoaded) {
+          List<SellerModel> sellers = state.sellers;
+          return _list(sellers);
+        }
+        return Container(height: 180, child: Loading());
+      }),
+    );
   }
 
   Widget _list(List<SellerModel> sellers) {
     return Card(
       elevation: 10,
       child: Container(
-        height: 180,
         margin: EdgeInsets.only(top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

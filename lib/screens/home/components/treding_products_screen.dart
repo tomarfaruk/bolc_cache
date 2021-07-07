@@ -33,7 +33,7 @@ class _TredingProductsScreenState extends State<TredingProductsScreen> {
         builder: (BuildContext context, TrendingProductsState state) {
       if (state is TrendingProductsListError) {
         final error = state.error;
-        String message = '${error.message}\nTap to Retry.';
+        String message = '${error.message} Tap to Retry.';
         return ErrorTxt(message: message, onTap: _loadSeller);
       }
       if (state is TrendingProductsLoaded) {

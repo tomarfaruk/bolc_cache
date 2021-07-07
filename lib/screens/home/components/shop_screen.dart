@@ -27,19 +27,22 @@ class _ShopScreenState extends State<ShopScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ShopBloc, ShopState>(
-      builder: (BuildContext context, ShopState state) {
-        if (state is ShopListError) {
-          final error = state.error;
-          String message = '${error.message}\nTap to Retry.';
-          return ErrorTxt(message: message, onTap: _loadSeller);
-        }
-        if (state is ShopLoaded) {
-          List<SellerModel> shopList = state.shopList;
-          return _list(shopList);
-        }
-        return Container(height: 180, child: Loading());
-      },
+    return Container(
+      height: 180,
+      child: BlocBuilder<ShopBloc, ShopState>(
+        builder: (BuildContext context, ShopState state) {
+          if (state is ShopListError) {
+            final error = state.error;
+            String message = '${error.message} Tap to Retry.';
+            return ErrorTxt(message: message, onTap: _loadSeller);
+          }
+          if (state is ShopLoaded) {
+            List<SellerModel> shopList = state.shopList;
+            return _list(shopList);
+          }
+          return Container(height: 180, child: Loading());
+        },
+      ),
     );
   }
 
@@ -47,7 +50,6 @@ class _ShopScreenState extends State<ShopScreen> {
     return Card(
       elevation: 10,
       child: Container(
-        height: 180,
         margin: EdgeInsets.only(top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

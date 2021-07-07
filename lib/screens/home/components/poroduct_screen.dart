@@ -31,8 +31,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
         builder: (BuildContext context, ProductState state) {
       if (state is ProductListError) {
         final error = state.error;
-        String message = '${error.message}\nTap to Retry.';
-        return ErrorTxt(message: message, onTap: _loadSeller);
+        String message = '${error.message} Tap to Retry.';
+        return Container(
+            height: 180, child: ErrorTxt(message: message, onTap: _loadSeller));
       }
       if (state is ProductLoaded) {
         List<ProductsModel> products = state.products;
