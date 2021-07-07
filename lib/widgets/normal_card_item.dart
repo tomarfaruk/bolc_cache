@@ -12,6 +12,7 @@ class ProductCardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 3,
+      margin: EdgeInsets.symmetric(vertical: 6, horizontal: 4),
       child: Container(
         width: double.infinity,
         height: 300,
@@ -22,6 +23,7 @@ class ProductCardItem extends StatelessWidget {
           children: [
             _buildHeader(),
             _buildTitle(),
+            SizedBox(height: 4),
             _buildImage(),
             SizedBox(height: 8),
             _buildFooter()
@@ -111,32 +113,34 @@ class ProductCardItem extends StatelessWidget {
           ),
         ),
         SizedBox(width: 8),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              product?.companyName ?? 'Name',
-              maxLines: 1,
-              textAlign: TextAlign.start,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontStyle: FontStyle.normal,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                product?.companyName ?? 'Name',
+                maxLines: 1,
+                textAlign: TextAlign.start,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FontStyle.normal,
+                ),
               ),
-            ),
-            SizedBox(height: 4),
-            Text(
-              product?.friendlyTimeDiff ?? 'time',
-              maxLines: 1,
-              textAlign: TextAlign.start,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
+              SizedBox(height: 4),
+              Text(
+                product?.friendlyTimeDiff ?? 'time',
+                maxLines: 1,
+                textAlign: TextAlign.start,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

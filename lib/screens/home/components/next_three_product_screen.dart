@@ -29,8 +29,8 @@ class NextThreeProductScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ...List.generate(
-          products.length > 6 ? 3 : products.length,
-          (index) => ProductCardItem(product: products[index + 3]),
+          products.length,
+          (index) => ProductCardItem(product: products[index]),
         ),
       ],
     );

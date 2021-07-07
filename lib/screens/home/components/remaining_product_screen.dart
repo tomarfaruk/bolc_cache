@@ -28,8 +28,8 @@ class RemainingProductScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ...List.generate(
-          products.length > 6 ? products.length - 6 : 0,
-          (index) => ProductCardItem(product: products[index + 6]),
+          products.length,
+          (index) => ProductCardItem(product: products[index]),
         ),
       ],
     );
